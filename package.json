@@ -4,11 +4,11 @@
   "private": true,
   "description": "Google Apps Script template with linting, formatting, and CI governance enforcement",
   "scripts": {
-    "lint": "eslint . --ext .gs,.js",
-    "lint:fix": "eslint . --ext .gs,.js --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "ci:lint": "eslint . --ext .gs,.js"
+    "ci:lint": "eslint ."
   },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.83",
