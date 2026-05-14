@@ -11,7 +11,7 @@ jobs:
   governance:
     name: Governance Engine
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write
       pull-requests: write
@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Governance
         id: governance
-        uses: Programming-Club-Curtin-Colombo/Governance@main
+        uses: Programming-Club-Curtin-Colombo/governance@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           discord-webhook-url: ${{ secrets.DISCORD_AUDIT_WEBHOOK_URL }}
