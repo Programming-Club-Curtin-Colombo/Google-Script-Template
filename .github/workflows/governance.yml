@@ -1,22 +1,21 @@
 name: Governance Pipeline
 
 on:
-  pull_request:
   pull_request_target:
-
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
     branches:
       - main
-
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
 
 jobs:
   governance:
     name: Governance Engine
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
 
     outputs:
       allowed: ${{ steps.governance.outputs.allowed }}
@@ -24,10 +23,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Run Governance
         id: governance
-        uses: ./
+        uses: Programming-Club-Curtin-Colombo/Governance@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           discord-webhook-url: ${{ secrets.DISCORD_AUDIT_WEBHOOK_URL }}
