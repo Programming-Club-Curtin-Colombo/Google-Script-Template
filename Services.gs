@@ -1,7 +1,7 @@
 function Services_getStatus() {
   return ContentService.createTextOutput(
     JSON.stringify({
-      status: "ok"
-    })
+      status: "ok",
+    }),
   ).setMimeType(ContentService.MimeType.JSON);
 }

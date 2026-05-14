@@ -33,12 +33,15 @@ Api.gs (optional)
 ## Code.gs - Entry Layer
 
 ### Purpose
+
 Handles all entry points into the system.
 
 ### Why it exists
+
 Google Apps Script exposes functions globally. Without a controlled entry layer, logic becomes scattered and untraceable.
 
 ### Rules
+
 - Only entry points (doGet, doPost, onOpen, triggers)
 - No business logic
 - Must delegate immediately to Services layer
@@ -48,12 +51,15 @@ Google Apps Script exposes functions globally. Without a controlled entry layer,
 ## Services.gs - Business Logic Layer
 
 ### Purpose
+
 Contains all core application workflows and decision-making logic.
 
 ### Why it exists
+
 Separates business logic from triggers and utilities, ensuring maintainability in a global execution environment.
 
 ### Rules
+
 - Owns all business logic
 - Calls Utils and Api layers
 - Must NOT handle UI or triggers directly
@@ -63,12 +69,15 @@ Separates business logic from triggers and utilities, ensuring maintainability i
 ## Utils.gs - Helper Layer
 
 ### Purpose
+
 Reusable, stateless helper functions.
 
 ### Why it exists
+
 Prevents duplication of logic and ensures consistency across Services.
 
 ### Rules
+
 - No side effects
 - No API calls
 - Prefer pure functions
@@ -78,12 +87,15 @@ Prevents duplication of logic and ensures consistency across Services.
 ## Config.gs - Configuration Layer
 
 ### Purpose
+
 Central place for constants and environment configuration.
 
 ### Why it exists
+
 GAS has no environment variable system; this file replaces that need.
 
 ### Rules
+
 - Immutable values only
 - No logic
 - No runtime mutation
@@ -93,12 +105,15 @@ GAS has no environment variable system; this file replaces that need.
 ## Triggers.gs - Event Layer
 
 ### Purpose
+
 Handles Google Apps Script event triggers.
 
 ### Why it exists
+
 Separates event handling from business logic.
 
 ### Rules
+
 - Must delegate to Services immediately
 - No embedded logic
 
@@ -107,12 +122,15 @@ Separates event handling from business logic.
 ## Api.gs - External Integration Layer (Optional)
 
 ### Purpose
+
 Handles all external API communication.
 
 ### Why it exists
+
 Isolates external dependencies from core logic for maintainability.
 
 ### Rules
+
 - Only API communication
 - No business logic
 - No transformation beyond response normalization

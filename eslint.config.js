@@ -8,8 +8,8 @@ module.exports = [
       "coverage/**",
       "dist/**",
       "**/*.json",
-      "package-lock.json"
-    ]
+      "package-lock.json",
+    ],
   },
 
   // 2. Base Configuration for .gs and .js files
@@ -34,8 +34,8 @@ module.exports = [
         UrlFetchApp: "readonly",
         HtmlService: "readonly",
         CacheService: "readonly",
-        LockService: "readonly"
-      }
+        LockService: "readonly",
+      },
     },
     rules: {
       // BASE SAFETY RULES
@@ -48,11 +48,13 @@ module.exports = [
       "no-restricted-syntax": [
         "error",
         {
-          selector: "FunctionDeclaration[id.name=/^(?!Services_|Utils_|Api_|on|doGet|doPost)/]",
-          message: "All functions must follow naming convention: Services_, Utils_, Api_ prefixes or GAS entry points."
-        }
-      ]
-    }
+          selector:
+            "FunctionDeclaration[id.name=/^(?!Services_|Utils_|Api_|on|doGet|doPost)/]",
+          message:
+            "All functions must follow naming convention: Services_, Utils_, Api_ prefixes or GAS entry points.",
+        },
+      ],
+    },
   },
 
   // 3. Layer-Specific Overrides
@@ -62,11 +64,13 @@ module.exports = [
       "no-restricted-syntax": [
         "error",
         {
-          selector: "FunctionDeclaration[id.name=/^(?!doGet|doPost|onOpen|onEdit)/]",
-          message: "Code.gs must only contain entry points (doGet, doPost, etc.)."
-        }
-      ]
-    }
+          selector:
+            "FunctionDeclaration[id.name=/^(?!doGet|doPost|onOpen|onEdit)/]",
+          message:
+            "Code.gs must only contain entry points (doGet, doPost, etc.).",
+        },
+      ],
+    },
   },
   {
     files: ["Utils.gs"],
@@ -79,16 +83,16 @@ module.exports = [
         "Logger",
         "GmailApp",
         "PropertiesService",
-        "ScriptApp"
+        "ScriptApp",
       ],
       "no-restricted-syntax": [
         "error",
         {
           selector: "FunctionDeclaration[id.name=/^Services_/]",
-          message: "Utils cannot define Services-layer functions."
-        }
-      ]
-    }
+          message: "Utils cannot define Services-layer functions.",
+        },
+      ],
+    },
   },
   {
     files: ["Services.gs"],
@@ -97,14 +101,16 @@ module.exports = [
         "error",
         {
           selector: "FunctionDeclaration[id.name=/^Api_/]",
-          message: "API logic must be placed in Api.gs, not Services.gs."
+          message: "API logic must be placed in Api.gs, not Services.gs.",
         },
         {
-          selector: "CallExpression[callee.name=/UrlFetchApp|SpreadsheetApp|DriveApp/]",
-          message: "Services must use Api.gs or Utils.gs for external/GAS API calls."
-        }
-      ]
-    }
+          selector:
+            "CallExpression[callee.name=/UrlFetchApp|SpreadsheetApp|DriveApp/]",
+          message:
+            "Services must use Api.gs or Utils.gs for external/GAS API calls.",
+        },
+      ],
+    },
   },
   {
     files: ["Api.gs"],
@@ -113,10 +119,10 @@ module.exports = [
         "error",
         {
           selector: "FunctionDeclaration[id.name=/^(?!Api_)/]",
-          message: "Api.gs functions must follow Api_ naming convention."
-        }
-      ]
-    }
+          message: "Api.gs functions must follow Api_ naming convention.",
+        },
+      ],
+    },
   },
   {
     files: ["Config.gs"],
@@ -125,13 +131,13 @@ module.exports = [
         "error",
         {
           selector: "FunctionDeclaration",
-          message: "Config.gs must not contain functions."
+          message: "Config.gs must not contain functions.",
         },
         {
           selector: "AssignmentExpression",
-          message: "Config.gs must be immutable."
-        }
-      ]
-    }
-  }
+          message: "Config.gs must be immutable.",
+        },
+      ],
+    },
+  },
 ];

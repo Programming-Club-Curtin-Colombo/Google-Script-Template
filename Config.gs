@@ -1,3 +1,3 @@
 const CONFIG = Object.freeze({
-  ENV: "dev"
+  ENV: "dev",
 });

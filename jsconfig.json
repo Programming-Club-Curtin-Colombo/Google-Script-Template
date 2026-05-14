@@ -6,11 +6,6 @@
     "checkJs": true,
     "strict": false
   },
-  "include": [
-    "**/*.js",
-    "**/*.gs"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.js", "**/*.gs"],
+  "exclude": ["node_modules"]
 }
