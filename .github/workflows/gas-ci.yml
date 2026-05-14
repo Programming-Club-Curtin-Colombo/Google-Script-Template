@@ -42,14 +42,20 @@ jobs:
       # =========================
       # Lint (STRICT MODE)
       # =========================
-      - name: Run ESLint (STRICT)
-        run: npx eslint . --ext .gs,.js
+      - name: Run ESLint
+        run: npm run ci:lint
 
       # =========================
       # Format check (FAIL ON ERROR)
       # =========================
       - name: Check formatting
-        run: npx prettier . --check
+        run: npm run format:check
+
+      # =========================
+      # Run Tests
+      # =========================
+      - name: Run Tests
+        run: npm test
 
       # =========================
       # Final gate

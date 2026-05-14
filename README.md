@@ -23,6 +23,7 @@ This repository provides a foundational structure for building robust Google App
 3. **Configure Clasp:**
    - Log in to Clasp: `npx clasp login`
    - Update `.clasp.json` with your `scriptId`.
+   - **Note:** Ensure "Google Apps Script API" is enabled in your [Google Apps Script Settings](https://script.google.com/home/usersettings).
    - Push your code: `npx clasp push`
 4. **Follow the instructions** in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
