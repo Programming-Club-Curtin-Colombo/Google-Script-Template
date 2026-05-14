@@ -29,12 +29,19 @@ This repository provides a foundational structure for building robust Google App
 
 ## Project Structure
 - `.github/`: CI/CD workflows, issue templates, and security policy.
-- `appsscript.json`: Google Apps Script manifest file.
+- `src/`: Google Apps Script source files and manifest.
+  - `appsscript.json`: Manifest file.
+  - `Code.gs`: Entry layer.
+  - `Services.gs`: Business logic layer.
+  - `Utils.gs`: Helper layer.
+  - `Config.gs`: Configuration layer.
+  - `Triggers.gs`: Event layer.
+  - `Api.gs`: External integration layer (optional).
+  - `tests/`: Project tests.
 - `.clasp.json`: Clasp configuration for local development.
 - `ARCHITECTURE.md`: High-level system design.
 - `API.md`: Documentation for API endpoints or interfaces.
 - `CONTRIBUTING.md`: Guidelines for contributors.
-- `*.gs`: Apps Script source files.
 
 ## License
 [Insert License Here]

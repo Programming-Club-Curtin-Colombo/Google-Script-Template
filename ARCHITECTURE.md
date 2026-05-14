@@ -14,14 +14,14 @@ Architecture is enforced through file separation, naming conventions, and strict
 # Required File Structure
 
 ```
-
-Code.gs
-Services.gs
-Utils.gs
-Config.gs
-Triggers.gs
-Api.gs (optional)
-
+src/
+├── Code.gs
+├── Services.gs
+├── Utils.gs
+├── Config.gs
+├── Triggers.gs
+├── Api.gs (optional)
+└── appsscript.json
 ```
 
 ---
