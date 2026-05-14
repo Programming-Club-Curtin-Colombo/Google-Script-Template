@@ -59,21 +59,36 @@ module.exports = [
 
   // 3. Layer-Specific Overrides
   {
-    files: ["Code.gs"],
+    files: ["src/Code.gs"],
     rules: {
       "no-restricted-syntax": [
         "error",
         {
+          // Allow standard GAS entry points OR library public functions (send*)
           selector:
-            "FunctionDeclaration[id.name=/^(?!doGet|doPost|onOpen|onEdit)/]",
+            "FunctionDeclaration[id.name=/^(?!doGet|doPost|onOpen|onEdit|send)/]",
           message:
-            "Code.gs must only contain entry points (doGet, doPost, etc.).",
+            "Code.gs must only contain entry points (doGet, doPost, etc.) or library public functions (send*).",
         },
       ],
     },
   },
   {
-    files: ["Utils.gs"],
+    files: ["src/tests/**/*.gs"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector:
+            "FunctionDeclaration[id.name=/^(?!test_|Services_|Utils_|Api_)/]",
+          message:
+            "Test functions must be prefixed with test_, Services_, Utils_, or Api_.",
+        },
+      ],
+    },
+  },
+  {
+    files: ["src/Utils.gs"],
     rules: {
       "no-restricted-globals": [
         "error",
@@ -95,7 +110,7 @@ module.exports = [
     },
   },
   {
-    files: ["Services.gs"],
+    files: ["src/Services.gs"],
     rules: {
       "no-restricted-syntax": [
         "error",
@@ -113,7 +128,7 @@ module.exports = [
     },
   },
   {
-    files: ["Api.gs"],
+    files: ["src/Api.gs"],
     rules: {
       "no-restricted-syntax": [
         "error",
@@ -125,7 +140,7 @@ module.exports = [
     },
   },
   {
-    files: ["Config.gs"],
+    files: ["src/Config.gs"],
     rules: {
       "no-restricted-syntax": [
         "error",
