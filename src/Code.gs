@@ -1,3 +1,7 @@
 function doGet() {
-  return Services_getStatus();
+  return Services.getStatus();
+}
+
+function doPost() {
+  return Services.getStatus();
 }
