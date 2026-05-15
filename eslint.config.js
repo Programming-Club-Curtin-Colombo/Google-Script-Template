@@ -131,16 +131,14 @@ module.exports = [
                     }
                   }
 
-                  // Rule: Api.gs must have Api_ prefix for exposed functions
+                  // Rule: Api.gs must only contain function declarations (exposed)
                   if (fileName === "Api" && dirName === ".") {
                     node.body.forEach(item => {
-                      if (item.type === "FunctionDeclaration") {
-                        if (!item.id.name.startsWith("Api_")) {
-                          context.report({
-                            node: item.id,
-                            message: "Api.gs functions must follow Api_ naming convention (e.g., Api_functionName).",
-                          });
-                        }
+                      if (item.type !== "FunctionDeclaration" && item.type !== "ExpressionStatement" && item.type !== "EmptyStatement") {
+                        context.report({
+                          node: item,
+                          message: "Api.gs should only contain exposed function declarations.",
+                        });
                       }
                     });
                   }

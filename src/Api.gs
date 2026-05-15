@@ -3,6 +3,6 @@
  */
 
 // API functions are exposed globally
-function Api_example() {
+function exampleFunction() {
   // Logic here
 }
