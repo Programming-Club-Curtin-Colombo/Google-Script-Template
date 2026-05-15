@@ -17,5 +17,9 @@
   },
   "debug": {
     "dryRun": false
+  },
+  "standards": {
+    "enforceAPI": false
   }
 }
+
